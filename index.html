@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Социальные гарантии ОГУЭП «Облкоммунэнерго»</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
         :root {
             --bg-dark: #070d1f;
@@ -128,10 +127,9 @@
 
         /* Акцентный блок */
         .accent-block {
-            background: linear-gradient(135deg, rgba(255, 77, 77, 0.05) 0%, rgba(255, 202, 58, 0.05) 100%);
 
-
-border: 1px solid rgba(255, 202, 58, 0.3);
+background: linear-gradient(135deg, rgba(255, 77, 77, 0.05) 0%, rgba(255, 202, 58, 0.05) 100%);
+            border: 1px solid rgba(255, 202, 58, 0.3);
             border-left: 4px solid var(--energy-warm);
             border-radius: 12px;
             padding: 40px;
@@ -155,7 +153,73 @@ border: 1px solid rgba(255, 202, 58, 0.3);
             line-height: 1.6;
         }
 
-        /* Сетка для блоков с информацией */
+        /* Блок 10 направлений работы (Новый) */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+            counter-reset: benefit-counter;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 168, 232, 0.15);
+            border-left: 3px solid var(--energy-blue);
+            padding: 25px 30px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Крупная цифра на фоне */
+        .benefit-card::before {
+            counter-increment: benefit-counter;
+            content: counter(benefit-counter, decimal-leading-zero);
+            position: absolute;
+            right: 15px;
+            bottom: -15px;
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            z-index: 0;
+            line-height: 1;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateX(5px);
+            border-left-color: var(--energy-warm);
+            background: linear-gradient(90deg, rgba(0, 168, 232, 0.08) 0%, rgba(255,255,255,0.02) 100%);
+            border-right-color: rgba(0, 168, 232, 0.3);
+        }
+
+        .benefit-card:hover::before {
+            color: rgba(0, 168, 232, 0.08);
+            transform: scale(1.1);
+        }
+
+        .benefit-card h4 {
+            color: #fff;
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+            margin: 0;
+        }
+
+        /* Сетка для блоков сравнения ТК и КД */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
@@ -197,7 +261,9 @@ border: 1px solid rgba(255, 202, 58, 0.3);
             background: rgba(0, 168, 232, 0.1);
             border-radius: 12px;
             display: flex;
-            align-items: center;
+
+
+align-items: center;
             justify-content: center;
             border: 1px solid rgba(0, 168, 232, 0.2);
             flex-shrink: 0;
@@ -275,7 +341,7 @@ border: 1px solid rgba(255, 202, 58, 0.3);
             line-height: 1.6;
         }
 
-.compare-text strong {
+        .compare-text strong {
             color: #fff;
             font-weight: 500;
         }
@@ -337,11 +403,13 @@ border: 1px solid rgba(255, 202, 58, 0.3);
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            .info-grid { grid-template-columns: 1fr; }
+            .info-grid, .benefits-grid { grid-template-columns: 1fr; }
             header { padding: 60px 0 30px; }
             .glass-card { padding: 25px; }
             .accent-block { padding: 25px; }
-        }
+
+
+}
     </style>
 </head>
 <body>
@@ -371,6 +439,66 @@ border: 1px solid rgba(255, 202, 58, 0.3);
             </div>
         </section>
 
+        <!-- НОВЫЙ БЛОК: 10 направлений -->
+        <section class="reveal">
+            <h2>10 главных направлений нашей работы</h2>
+            <div class="benefits-grid">
+                
+                <div class="benefit-card">
+                    <h4>Формирование Коллективного договора</h4>
+                    <p>Непосредственное участие в составлении КД: внесение поправок и добавление важных пунктов, защищающих коллектив.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h4>Голос коллектива</h4>
+                    <p>Организованное представительство и защита общих интересов работников перед руководством предприятия.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Безопасность труда</h4>
+                    <p>Постоянный строгий контроль за безопасностью условий труда, исправностью оборудования и качеством выдаваемых СИЗ.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Юридический щит</h4>
+                    <p>Бесплатные правовые консультации, помощь в составлении документов и полное сопровождение в судебных процессах.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Культурная жизнь</h4>
+                    <p>Проведение праздников, концертов и массовых мероприятий (как для членов профсоюза, так и для всех сотрудников).</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Спорт и здоровье</h4>
+                    <p>Организация спортивных мероприятий: внутренние спартакиады, городские конкурсы, выездные турниры и походы.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Поддержка в важные моменты</h4>
+                    <p>Социальная и финансовая поддержка в связи с заключением брака, рождением ребенка или в честь личных юбилеев.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Помощь в беде</h4>
+                    <p>Оперативная материальная помощь сотрудникам, оказавшимся в трудной или непредвиденной жизненной ситуации.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Касса взаимопомощи</h4>
+                    <p>Возможность оформить беспроцентный займ на личные нужды внутри предприятия без банковских комиссий и проволочек.</p>
+
+
+</div>
+
+                <div class="benefit-card">
+                    <h4>Спонсорство инициатив</h4>
+                    <p>Поощрение участия в профессиональных и творческих конкурсах — профсоюз полностью берет ваши расходы на себя.</p>
+                </div>
+
+            </div>
+        </section>
+
         <section class="reveal">
             <h2>Профсоюз в цифрах (за 2025 год)</h2>
             <div class="stats-wrapper">
@@ -383,7 +511,7 @@ border: 1px solid rgba(255, 202, 58, 0.3);
                     <div class="stat-label">Состоят в первичной профсоюзной организации</div>
                 </div>
                 <div class="stat-item">
-<div class="stat-number">333.8 тыс. ₽</div>
+                    <div class="stat-number">333.8 тыс. ₽</div>
                     <div class="stat-label">Выделено на материальную помощь в трудных ситуациях</div>
                 </div>
                 <div class="stat-item">
@@ -426,7 +554,8 @@ border: 1px solid rgba(255, 202, 58, 0.3);
                                 <strong>Дополнительные выходные (без сохранения ЗП):</strong> пенсионерам до 14 дней, женщинам в сельской местности — 1 день в месяц по заявлению.<br>
                                 <strong>Защита:</strong> Профсоюз строго контролирует, чтобы законные «северные» дни и часы предоставлялись в полном объеме и не сгорали по прихоти руководства на местах.
                             </div>
-                        </div>
+
+</div>
                     </div>
                 </div>
 
@@ -440,7 +569,7 @@ border: 1px solid rgba(255, 202, 58, 0.3);
                     
                     <div class="compare-item">
                         <div class="compare-row">
-<div><span class="badge-tk">База по ТК РФ</span></div>
+                            <div><span class="badge-tk">База по ТК РФ</span></div>
                             <div class="compare-text">Голый оклад. Доплата за работу в ночное время по закону составляет <strong>минимум 20%</strong>.</div>
                         </div>
                         <div class="compare-row" style="margin-top: 15px;">
@@ -482,7 +611,8 @@ border: 1px solid rgba(255, 202, 58, 0.3);
                                 <strong>Поддержка пенсионеров:</strong> При выходе на пенсию выплачивается до 5 ММТС (в зависимости от стажа).<br>
                                 <strong>События:</strong> 1 ММТС при рождении ребенка, браке или потере близких.<br>
                                 <strong>Дети:</strong> Частичная или полная компенсация детских садов и лагерей (решается комиссией).
-                            </div>
+
+</div>
                         </div>
                     </div>
                 </div>
@@ -498,8 +628,7 @@ border: 1px solid rgba(255, 202, 58, 0.3);
                     <div class="compare-item">
                         <div class="compare-row">
                             <div><span class="badge-tk">База по ТК РФ</span></div>
-
-<div class="compare-text">Уведомление за 2 месяца. Выходное пособие в размере <strong>одного</strong> среднего заработка. Время на поиск работы не оплачивается.</div>
+                            <div class="compare-text">Уведомление за 2 месяца. Выходное пособие в размере <strong>одного</strong> среднего заработка. Время на поиск работы не оплачивается.</div>
                         </div>
                         <div class="compare-row" style="margin-top: 15px;">
                             <div><span class="badge-kd">Добавлено Коллективным договором</span></div>
@@ -546,7 +675,8 @@ border: 1px solid rgba(255, 202, 58, 0.3);
                 <div class="glass-card warm">
                     <div class="card-header">
                         <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72l5 2.73 5-2.73v3.72z"/></svg>
+
+<svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72l5 2.73 5-2.73v3.72z"/></svg>
                         </div>
                         <h3>Обучение, Север и Награды</h3>
                     </div>
@@ -557,8 +687,7 @@ border: 1px solid rgba(255, 202, 58, 0.3);
                             <div class="compare-text">Оплата учебных отпусков (сессий для первого образования). Оплата проезда в отпуск для северян (раз в 2 года).</div>
                         </div>
                         <div class="compare-row" style="margin-top: 15px;">
-
-<div><span class="badge-kd">Добавлено Коллективным договором</span></div>
+                            <div><span class="badge-kd">Добавлено Коллективным договором</span></div>
                             <div class="compare-text">
                                 <strong>Обучение:</strong> Предприятие дополнительно оплачивает 50-100% стоимости проезда к месту учебы раз в год (студентам-заочникам).<br>
                                 <strong>Молодежь:</strong> Работникам до 30 лет на Севере <strong>с первого дня</strong> идет надбавка 50% к окладу (если проживали там до трудоустройства).<br>
